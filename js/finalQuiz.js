@@ -1,4 +1,4 @@
- var quiztitle = "Social Security Quiz";
+ var quiztitle = "Your Learning Quiz";
 
 
  var quiz = [
@@ -12,7 +12,7 @@
                                     "Blue"
                                 ],
             "correct" : "Orange",
-            "explanation" : "Orange is the right! You're awesome! Let's keep going!.",
+            "explanation" : "Orange is the right answer! You're still awesome! Let's keep going!.",
         },
         {
             "question" : "Q2: How many apples are there?",
@@ -24,7 +24,7 @@
                                     "2"
                                 ],
             "correct" : "2",
-            "explanation" : "WAY TOO GO!!",
+            "explanation" : "Two is the right answer. LET'S GO!!",
         },
         {
             "question" : "Q3: How many cats have paws outside of the fence?",
@@ -36,7 +36,7 @@
                                     "0 of the three"
                                 ],
             "correct" : "1 of the three",
-            "explanation" : "That's right",
+            "explanation" : "There's only 1 of the three and he is at the right of the picture.",
         },
      
 
@@ -159,7 +159,7 @@
          $('#question').empty();
          $('#choice-block').empty();
          $('#submitbutton').remove();
-         $('#question').text("You got " + score + " out of " + quiz.length + " correct.");
+         $('#question').text("You got " + score + " out of " + quiz.length + " correct. Great job!");
          $(document.createElement('h2')).css({
              'text-align': 'center',
              'font-size': '4em'
