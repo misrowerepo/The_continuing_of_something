@@ -27,6 +27,9 @@
               android:maxSdkVersion="19" />
 
 
-<gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
+<gap:plugin name="org.apache.cordova.splashscreen" />
+
+<preference name="SplashScreen" value="we_learn1.jpg" />
+<preference name="SplashScreenDelay" value="10000" />
 
 </widget>
