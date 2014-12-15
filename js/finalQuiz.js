@@ -194,7 +194,7 @@
              addChoices(quiz[0]['choices']);
 
              //add submit button
-             $(document.createElement('div')).addClass('choice-box').attr('id', 'submitbutton').text('Check Answer').css({
+             $(document.createElement('div')).addClass('choice-box').attr('id', 'submitbutton').text('Next Question').css({
                  'font-weight': 700,
                  'color': '#222',
                  'padding': '30px 0',
