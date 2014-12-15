@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+	xmlns:android   = "http://schemas.android.com/apk/res/android"
+        id          = "edu.misrowe.n300.iupui"
+        version     = "1.0.0" >
+
+    <name>Spalsh Screen</name>
+
+    <description>
+        We Learn's Splash screen
+    </description>
+
+    <author href="https://github.com/misrowerepo/The_continuing_of_something" email="misrowe@umail.iu.edu">
+        Michael Rowe
+    </author>
+
+	<icon src="tux-adventure.jpg" />
+	<gap:splash src="we_learn1.jpg" />
+
+	<gap:platform name="ios" />
+	<gap:platform name="android" />
+
+
+    <uses-sdk android:minSdkVersion="19"
+              android:targetSdkVersion="19"
+              android:maxSdkVersion="19" />
+
+
+<gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
+
+</widget>
