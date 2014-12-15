@@ -1,0 +1,308 @@
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+    <title> Dog - Cat Quiz </title>
+    <script type="text/javascript">
+    // From: http://www.codingforums.com/showthread.php?t=228912
+
+    var questions = [
+    	['http://t1.gstatic.com/images?q=tbn:ANd9GcQ8TCkWWZ77tSRIx1tQ41KQVQDK-0WSNecXXp6Z3ddMcflSmq6r','0'],
+    	['http://t1.gstatic.com/images?q=tbn:ANd9GcRO5oLc7uj_EEEZFYVJJhHFkgipgSG4o-C0LkgjLaNgCg0FmpbhlA','1'],
+    	['http://t1.gstatic.com/images?q=tbn:ANd9GcTLB0bfIpYy1NCsUyJ7ACsg7qz6A-tO-OLorslpXjWZbG79nu3P','0'],
+    	['http://t1.gstatic.com/images?q=tbn:ANd9GcSQm2zDGoyRIJIsrDKpMDu7W73jACQYT3k7wXlgWnvdXNxYpghZ','1'],
+    	['http://t2.gstatic.com/images?q=tbn:ANd9GcRrg9qjsduusJS4Fg3Ltw6eIHRw9CFLxKBaqHMsZ40o6htaFzz-RQ','0'],
+    	['http://t2.gstatic.com/images?q=tbn:ANd9GcRsE5EwczKxTiWTiQvDPSuRamB48pb2yyvnumrRqwyujI6M4Tby','1']  // Note: no comma after last entry
+    ];
+    var qNo = 0;
+    var correct = 0;
+
+    function resetRBtn(GrpName) {
+      var sel = document.getElementsByName(GrpName);
+      for (var i=0; i<sel.length; i++) { sel[i].checked = false; }
+    }
+    function getRBtnName(GrpName) {
+      var sel = document.getElementsByName(GrpName);
+      var fnd = -1;
+      var str = '';
+      for (var i=0; i<sel.length; i++) {
+        if (sel[i].checked == true) { str = sel[i].value;  fnd = i; }
+      }
+    //  return fnd;   // return option index of selection
+    // comment out next line if option index used in line above  
+      return str;
+    } 
+
+    function NextQuestion() {
+      var ans = getRBtnName('ans');
+      if ((qNo < questions.length) && (ans == questions[qNo][1])) { correct++; }
+      resetRBtn('ans');
+      
+      if (qNo < questions.length) {
+        qNo++;
+      } else {
+        alert('You had '+correct+' correct answers\n\nQuiz is done');
+    	return;
+      }
+      
+      if (qNo < questions.length) { document.getElementById('Pic').src = questions[qNo][0]; }
+    					     else { alert('You had '+correct+' correct answers'); }
+    }
+    onload = function() { document.getElementById('Pic').src = questions[0][0]; }
+
+    </script>
+
+    </head>
+    <body>
+    <h1>Dog or Cat Quiz</h1>
+    <img src="" id="Pic" height="200" width="250">
+    <p>
+    <label><input type="image" src="dog.jpg" width="55" height="22" name="ans" id="ans" value="0" onclick="NextQuestion()"></label>
+    <label><input type="image" src="cat.jpg" width="55" height="22" name="ans" id="ans" value="1" onclick="NextQuestion()"></label>
+    <p>
+
+    </body>
+    </html>
+
+    Share
+
+Reply With Quote Reply With Quote
+06-09-2011, 05:27 AM #12
+jmrker
+jmrker is offline
+Senior Coder jmrker's Avatar
+
+Join Date
+    Aug 2006
+Location
+    FL
+Posts
+    3,144
+Thanks
+    38
+    Thanked 505 Times in 499 Posts
+
+Lightbulb Try this ...
+
+    OK, at least an attempt.
+    See if this is more to your liking.
+    Code:
+
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+    <title> Dog - Cat Quiz </title>
+    <script type="text/javascript">
+    // From: http://www.codingforums.com/showthread.php?t=228912
+
+    var questions = [
+    	['http://t1.gstatic.com/images?q=tbn:ANd9GcQ8TCkWWZ77tSRIx1tQ41KQVQDK-0WSNecXXp6Z3ddMcflSmq6r','0'],
+    	['http://t1.gstatic.com/images?q=tbn:ANd9GcRO5oLc7uj_EEEZFYVJJhHFkgipgSG4o-C0LkgjLaNgCg0FmpbhlA','1'],
+    	['http://t1.gstatic.com/images?q=tbn:ANd9GcTLB0bfIpYy1NCsUyJ7ACsg7qz6A-tO-OLorslpXjWZbG79nu3P','0'],
+    	['http://t1.gstatic.com/images?q=tbn:ANd9GcSQm2zDGoyRIJIsrDKpMDu7W73jACQYT3k7wXlgWnvdXNxYpghZ','1'],
+    	['http://t2.gstatic.com/images?q=tbn:ANd9GcRrg9qjsduusJS4Fg3Ltw6eIHRw9CFLxKBaqHMsZ40o6htaFzz-RQ','0'],
+    	['http://t2.gstatic.com/images?q=tbn:ANd9GcRsE5EwczKxTiWTiQvDPSuRamB48pb2yyvnumrRqwyujI6M4Tby','1']  // Note: no comma after last entry
+    ];
+    var qNo = 0;
+    var correct = 0;
+    var cnt = 0;
+
+    function NextQuestion(response) {
+      if ((qNo < questions.length) && (response == questions[qNo][1])) { correct++; }
+      document.getElementById('score').innerHTML 
+        = 'You had '+correct+' correct answers for '+(cnt+1)+' questions';
+      qNo++;
+      if (qNo < questions.length) { document.getElementById('Pic').src = questions[qNo][0]; cnt++; }
+    					     else { alert('Quiz is done'); }
+    }
+    onload = function() {
+     document.getElementById('Pic').src = questions[0][0];
+    }
+
+    </script>
+
+    </head>
+    <body>
+    <div align="center">
+    <h1>Dog or Cat Quiz</h1>
+    <img src="" id="Pic" height="200" width="250">
+    <p> Is this a 
+    <button onclick="NextQuestion('0')">Dog</button>
+     or a 
+    <button onclick="NextQuestion('1')">Cat</button> ?
+    <p>Your score: <br><span id="score"></span>
+    </div>
+    </body>
+    </html>
+
+    Notice that I deleted a lot of unused code.
+    Good Luck!
+
+    Share
+
+Reply With Quote Reply With Quote
+Users who have thanked jmrker for this post:
+
+    jmcewan (06-09-2011) 
+
+06-09-2011, 05:39 AM #13
+jmcewan
+jmcewan is offline
+New Coder
+
+Join Date
+    Jun 2011
+Posts
+    12
+Thanks
+    2
+    Thanked 0 Times in 0 Posts
+
+    Quote Originally Posted by jmrker View Post
+    OK, at least an attempt.
+    See if this is more to your liking.
+    Code:
+
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+    <title> Dog - Cat Quiz </title>
+    <script type="text/javascript">
+    // From: http://www.codingforums.com/showthread.php?t=228912
+
+    var questions = [
+    	['http://t1.gstatic.com/images?q=tbn:ANd9GcQ8TCkWWZ77tSRIx1tQ41KQVQDK-0WSNecXXp6Z3ddMcflSmq6r','0'],
+    	['http://t1.gstatic.com/images?q=tbn:ANd9GcRO5oLc7uj_EEEZFYVJJhHFkgipgSG4o-C0LkgjLaNgCg0FmpbhlA','1'],
+    	['http://t1.gstatic.com/images?q=tbn:ANd9GcTLB0bfIpYy1NCsUyJ7ACsg7qz6A-tO-OLorslpXjWZbG79nu3P','0'],
+    	['http://t1.gstatic.com/images?q=tbn:ANd9GcSQm2zDGoyRIJIsrDKpMDu7W73jACQYT3k7wXlgWnvdXNxYpghZ','1'],
+    	['http://t2.gstatic.com/images?q=tbn:ANd9GcRrg9qjsduusJS4Fg3Ltw6eIHRw9CFLxKBaqHMsZ40o6htaFzz-RQ','0'],
+    	['http://t2.gstatic.com/images?q=tbn:ANd9GcRsE5EwczKxTiWTiQvDPSuRamB48pb2yyvnumrRqwyujI6M4Tby','1']  // Note: no comma after last entry
+    ];
+    var qNo = 0;
+    var correct = 0;
+    var cnt = 0;
+
+    function NextQuestion(response) {
+      if ((qNo < questions.length) && (response == questions[qNo][1])) { correct++; }
+      document.getElementById('score').innerHTML 
+        = 'You had '+correct+' correct answers for '+(cnt+1)+' questions';
+      qNo++;
+      if (qNo < questions.length) { document.getElementById('Pic').src = questions[qNo][0]; cnt++; }
+    					     else { alert('Quiz is done'); }
+    }
+    onload = function() {
+     document.getElementById('Pic').src = questions[0][0];
+    }
+
+    </script>
+
+    </head>
+    <body>
+    <div align="center">
+    <h1>Dog or Cat Quiz</h1>
+    <img src="" id="Pic" height="200" width="250">
+    <p> Is this a 
+    <button onclick="NextQuestion('0')">Dog</button>
+     or a 
+    <button onclick="NextQuestion('1')">Cat</button> ?
+    <p>Your score: <br><span id="score"></span>
+    </div>
+    </body>
+    </html>
+
+    Notice that I deleted a lot of unused code.
+    Good Luck!
+    Brilliant.
+
+    That's basically perfect. Any way I can use an image instead of a standard button for people to click on? My version looked good, except it didn't count the answers, lol. 
+
+    Share
+
+Reply With Quote Reply With Quote
+06-09-2011, 05:52 AM #14
+jmrker
+jmrker is offline
+Senior Coder jmrker's Avatar
+
+Join Date
+    Aug 2006
+Location
+    FL
+Posts
+    3,144
+Thanks
+    38
+    Thanked 505 Times in 499 Posts
+
+Thumbs up
+
+    Try...
+    Code:
+
+    <p>
+    <input type="image" src="dog.jpg" width="55" height="22" onclick="NextQuestion('0')">
+    <input type="image" src="cat.jpg" width="55" height="22" onclick="NextQuestion('1')">
+    <p>
+
+    as substitute for <button...> in last supplied code. 
+
+    Share
+
+Reply With Quote Reply With Quote
+06-09-2011, 06:03 AM #15
+jmcewan
+jmcewan is offline
+New Coder
+
+Join Date
+    Jun 2011
+Posts
+    12
+Thanks
+    2
+    Thanked 0 Times in 0 Posts
+
+    Quote Originally Posted by jmrker View Post
+    Try...
+    Code:
+
+    <p>
+    <input type="image" src="dog.jpg" width="55" height="22" onclick="NextQuestion('0')">
+    <input type="image" src="cat.jpg" width="55" height="22" onclick="NextQuestion('1')">
+    <p>
+
+    as substitute for <button...> in last supplied code.
+    Excellent. Why didn't that work the last time I tried it? I actually had that code (at least almost) correct....but anyways...
+
+    That's basically perfect. I'll spend some time on my own tweaking the design a little, but I appreciate the help because I had no idea how to even begin this. Maybe I'll even post the website I'm using it on once it's up and running.
+
+    Thanks again. 
+
+    Share
+
+Reply With Quote Reply With Quote
+
+ 
+Page 1 of 2 12 Next LastLast
+« Previous Thread | Next Thread »
+Posting Permissions
+
+    You may not post new threads
+    You may not post replies
+    You may not post attachments
+    You may not edit your posts
+     
+
+    BB code is On
+    Smilies are On
+    [IMG] code is On
+    [VIDEO] code is On
+    HTML code is Off
+    Trackbacks are On
+    Pingbacks are On
+    Refbacks are On
+
+Forum Rules
+
+    Advertising
+    Advertisement
+
