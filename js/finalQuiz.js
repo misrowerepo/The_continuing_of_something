@@ -38,8 +38,30 @@
             "correct" : "1 of the three",
             "explanation" : "There's only 1 of the three and he is at the right of the picture.",
         },
-     
-
+        {
+            "question" : "Q4: If you and either mommy or daddy are doing the quiz, how many people are doing the quiz?",
+            "image" : "http://i120.photobucket.com/albums/o173/snowdenranya/MySpace%20Pics/ROYAL%20TALK%20Publications/MOMwithwalkingchild1_zps5cee772f.jpg",
+            "choices" : [
+                                    "2 people",
+                                    "1 person",
+                                    "3  people (because rex is in the room)",
+                                    "0 people"
+                                ],
+            "correct" : "2 people",
+            "explanation" : "We are not being mean, but if we don't count Rex there should be just 2 of you!.",
+        },
+        {
+            "question" : "Q5: If you have 2 oranges and Tux has 2 oranges, if Tux gives you his two oranges you will have multiplied your oranges twice! How many total organges do you have now?",
+            "image" : "http://gardenworldimages.co.uk/ImageThumbs/FP_CS3104/1/FP_CS3104_CITRUS_SINENSIS_ORANGE.jpg",
+            "choices" : [
+                                    "2 Oranges",
+                                    "5 Oranges",
+                                    "4 Oranges",
+                                    "6 Oranges"
+                                ],
+            "correct" : "4 Oranges",
+            "explanation" : "When you multiply, you are saying that you have a certain amount of things so many times. So you have 2 oranges 2 times which makes 4 Oranges! ",
+        }
     ];
 
 
