@@ -67,7 +67,6 @@
 
      function nextQuestion() {
          submt = true;
-         alert("nQ");
          $('#explanation').empty();
          $('#question').text(quiz[currentquestion]['question']);
          $('#pager').text('Question ' + Number(currentquestion + 1) + ' of ' + quiz.length);
@@ -88,9 +87,7 @@
 
 
      function processQuestion(choice) {
-         alert(choice);
          currentquestion++;
-          alert(currentquestion);
          $("#submitbutton").hide();
    
              if (currentquestion == quiz.length) {
@@ -115,7 +112,6 @@
              });
          })
          $('.choice').on('click', function () {
-             alert("");
              choice = $(this).attr('data-index');
              $('.choice').removeAttr('style').off('mouseout mouseover');
              $(this).css({
@@ -137,14 +133,12 @@
          }
                 $("#submitbutton").show();
              if (submt) {
-                 alert("submit");
                  submt = false;
                  $('#submitbutton').css({
                      'color': '#000'
 
                  });
                  $("#submitbutton").click(function(){
-                   alert("click");
                       $('.choice').off('click');
                      $(this).off('click');
                      processQuestion(choice);
