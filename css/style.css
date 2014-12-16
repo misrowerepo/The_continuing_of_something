@@ -2,9 +2,6 @@
 
 @charset "UTF-8";
 
-/* ------------------------------------------
-  RESET
---------------------------------------------- */
 img, object, embed, video {
     max-width: 100%;
 }
@@ -133,7 +130,4 @@ footer {
 	display: inline;
 	float: right;
 }
-
-
-
 
