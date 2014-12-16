@@ -26,7 +26,5 @@
               android:targetSdkVersion="19"
               android:maxSdkVersion="19" />
 
-<gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
-
 
 </widget>
